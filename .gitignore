@@ -146,5 +146,6 @@ dmypy.json
 .idea/
 model*/
 *.txt
+coding_test/
 
 # End of https://www.toptal.com/developers/gitignore/api/python
