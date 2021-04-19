@@ -35,7 +35,7 @@ while True:
             clean += 1
             r -= 1; rotated = [0,0,0,0]
         else:
-            if sum(rotated) > 4:  # 네 방향 모두 청소가 이미 되어있거나 벽인 경우
+            if sum(rotated) > 4:
                 d = 1
                 if (c-1 < 0) or (graph[r][c-1] == 1):
                     print(clean)
@@ -50,7 +50,7 @@ while True:
             clean += 1
             c += 1; rotated = [0,0,0,0]
         else:
-            if sum(rotated) > 4:  # 네 방향 모두 청소가 이미 되어있거나 벽인 경우
+            if sum(rotated) > 4:
                 d = 2
                 if (r-1 < 0) or (graph[r-1][c] == 1):
                     print(clean)
@@ -65,7 +65,7 @@ while True:
             clean += 1
             r += 1; rotated = [0,0,0,0]
         else:
-            if sum(rotated) > 4:  # 네 방향 모두 청소가 이미 되어있거나 벽인 경우
+            if sum(rotated) > 4:
                 d = 3
                 if (c+1 >= M) or (graph[r][c+1] == 1):
                     print(clean)
