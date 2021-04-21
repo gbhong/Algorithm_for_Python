@@ -1,7 +1,7 @@
 import sys
 sys.stdin = open('./BJ_14503_input.txt', 'r')
 
-N, M = map(int, input().split())
+N, M = map(int, input().split()) # N은 행의 개수, M은 열의 개수
 r, c, d = map(int, input().split()) # (r,c)는 시작 위치, d는 방향
 graph = [list(map(int, input().split())) for _ in range(N)] # 행의 개수만큼 loop
 
@@ -9,7 +9,6 @@ visited = [[0]*M for _ in range(N)]
 visited[r][c] = 1
 
 rotated = [0, 0, 0, 0]
-rotated[d] = 1
 
 clean = 1
 while True:
