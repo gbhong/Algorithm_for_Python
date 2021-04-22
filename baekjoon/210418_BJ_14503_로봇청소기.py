@@ -8,7 +8,7 @@ graph = [list(map(int, input().split())) for _ in range(N)]
 visited = [[0]*M for _ in range(N)]
 visited[r][c] = 1
 
-rotated = [0, 0, 0, 0]
+rotated = [0,0,0,0]
 
 clean = 1
 while True:
