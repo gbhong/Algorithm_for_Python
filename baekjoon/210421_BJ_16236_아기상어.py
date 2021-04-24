@@ -7,6 +7,7 @@ graph = [list(map(int, input().split())) for _ in range(N)]
 for i in range(N):
     for j in range(N):
         if graph[i][j] == 9:
+            graph[i][j] = 0
             start = (i, j)
 
 dx = [-1, 0, 0, 1]
@@ -28,7 +29,6 @@ def BFS(start:tuple):
         if len_path == visited[cx][cy]: # 식사 시작
 
             points.sort(key=lambda x:(x[0], x[1]))
-            print(points)
             cnt += 1  # 먹은 개수
             if cnt == size:
                 size += 1
