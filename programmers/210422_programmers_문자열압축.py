@@ -23,4 +23,4 @@ def solution(s):
         answer = min(res, answer)
     return answer
 
-print(solution('a'))
+print(solution('abcabcab'))
