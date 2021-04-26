@@ -11,16 +11,29 @@ visited[r][c] = 1
 
 # d가 0인 경우 북, 1인 경우 동, 2인 경우 남, 3인 경우 서
 dx = [-1,0,1,0]
-dy = [0,-1,0,1]
-rotation = [3,0,1,2]
+dy = [0,1,0,-1]
+
+def clean(r, c, d):
+    global N, M, graph, visited, cnt
+    for i in range(d+3, d-1, -1):
+        i %= 4 # 방향 회전
+        nx = r + dx[i]; ny = c + dy[i] # 다음 위치 설정
+        if (graph[nx][ny] == 0) and (visited[nx][ny] == 0): # 다음 위치 이동 가능 여부
+            visited[nx][ny] = 1; cnt += 1
+            return nx, ny, i
+
+    # 네 방향 모두 청소 실패했을 때, 후진 가능 여부 판단
+    bx = r - dx[i]; by = c - dy[i]
+    if graph[bx][by] == 0:
+        return bx, by, d
+    else:
+        return -1
 
 cnt = 1
 while True:
-    for i in range(4):
-        nx = r + dx[i]; ny = c + dy[i]
-        if (0 <= nx < M) and (0 <= ny < N) and visited[nx][ny] == 0:
-            d = rotation[i]
-            r = nx; c = ny
-            cnt += 1
-            break
-
+    result = clean(r, c, d)
+    if result == -1:
+        print(cnt)
+        break
+    else:
+        r, c, d = result[0],result[1],result[2]
