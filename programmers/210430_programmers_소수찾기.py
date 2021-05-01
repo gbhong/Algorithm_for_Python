@@ -9,7 +9,7 @@ def solution(numbers):
     answer = 0
     for n in num_set:
         if n > 1:
-            d = n - 1
+            d = n//2
             while d > 1:
                 if n % d == 0:
                     break
@@ -21,4 +21,4 @@ def solution(numbers):
 
     return answer
 
-print(solution(''))
+print(solution('1234'))
