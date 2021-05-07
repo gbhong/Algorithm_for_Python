@@ -1,14 +1,26 @@
-def solution(v):
-    x = [p[0] for p in v]
-    y = [p[1] for p in v]
+# dict 자료구조에서 pointer 활용
+def solution(gems):
+    size = len(set(gems))
+    dic = {gems[0]:1}
+    ans = [0, len(gems)-1]
+    start, end = 0, 0
 
-    answer = [0, 0]
-    for i in range(len([x,y])):
-        for p in [x,y][i]:
-            if [x,y][i].count(p) == 1:
-                answer[i] = p
+    while start < len(gems):
+        if len(dic) == size:
+            if (end - start) < (ans[1] - ans[0]):
+                ans = [start, end]
+            if dic[gems[start]] == 1:
+                del dic[gems[start]]
+            else:
+                dic[gems[start]] -= 1
+            start += 1
+        else:
+            end += 1
+            if end == len(gems): # 포인터가 배열 이탈하면 종료
                 break
+            if gems[end] in dic:
+                dic[gems[end]] += 1
+            else:
+                dic[gems[end]] = 1
 
-    return answer
-
-print(solution([[1,4],[3,4],[3,10]]))
+    return [ans[0]+1, ans[1]+1]
