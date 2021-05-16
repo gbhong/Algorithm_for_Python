@@ -12,6 +12,5 @@ class Solution:
 
         return sorted(res)[-1] if len(res) > 0 else 0
 
-
 s = Solution()
 print(s.maxProfit([7,6,4,3,1]))
