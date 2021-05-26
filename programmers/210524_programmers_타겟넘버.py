@@ -1,24 +1,20 @@
-class target_num(object):
-    def __init__(self):
-        self.answer = 0
-        self.numbers = None
-        self.target = None
+# BFS
+from collections import deque
 
-    def pwrset_sum(self, k, idx):
-        print(k, idx)
-        if idx == len(self.numbers):
-            if k == self.target:
-                self.answer += 1
-            return
+def solution(numbers, target):
+    queue = deque()
+    queue.append((0, 0))
 
-        for i in range(idx, len(self.numbers)):
-            self.pwrset_sum(k + self.numbers[i], idx + 1)
-            self.pwrset_sum(k - self.numbers[i], idx + 1)
+    answer = 0
+    while queue:
+        k, idx = queue.popleft()
+        if idx == len(numbers):
+            if k == target:
+                answer += 1
+        else:
+            queue.append((k + numbers[idx], idx + 1))
+            queue.append((k - numbers[idx], idx + 1))
 
-    def solution(self, numbers, target):
-        self.numbers = numbers
-        self.target = target
-        self.pwrset_sum(k=0, idx=0)
-        return self.answer
+    return answer
 
-print(target_num().solution(numbers=[1,1], target=2))
+print(solution([1,1,1,1,1], 3))
