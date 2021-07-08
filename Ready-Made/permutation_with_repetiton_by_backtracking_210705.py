@@ -4,10 +4,10 @@
 def permutation_with_repeat(arr: list, depth: int, query: str):
     global letters, results, cnt
 
-    if query in results:
+    if query in results: # check for duplication
         return
 
-    if depth > 5: # 5 is length of letters
+    if depth > 5: # 5 is the maximum length of result
         return
 
     if arr not in results and depth:
@@ -23,5 +23,6 @@ def permutation_with_repeat(arr: list, depth: int, query: str):
 letters = ['A', 'E', 'I', 'O', 'U']
 results = []
 cnt = 0
+
 permutation_with_repeat('', 0, 'AAAE')
 print(cnt)
